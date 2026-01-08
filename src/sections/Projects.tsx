@@ -1,9 +1,11 @@
+import { useState } from 'react'
 import libreria from '../assets/projects/TiendaOnline.png'
 import libreria2 from '../assets/projects/GestionStock.png'
 import concejo from '../assets/projects/Concejo.png'
 import prestamos from '../assets/projects/Prestamos.png'
 import finanzas from '../assets/projects/Finanzas.png'
 import kiosco from '../assets/projects/Kiosco.png'
+
 
 const proyectos = [
   {
@@ -13,7 +15,7 @@ const proyectos = [
     tecnologias: ['PHP', 'MySQL', 'Bootstrap', 'Mercado Pago'],
     link: 'https://github.com/lauasdasd/libreria'
   },
-    {
+  {
     nombre: 'Sistema de Librería - Gestion de Stock',
     descripcion: 'Sistema interno de gestión de stock orientado a librerías y pequeños comercios. Permite administrar artículos, categorías, movimientos de stock y precios, facilitando el control diario del inventario y la toma de decisiones.',
     imagen: libreria2,
@@ -50,99 +52,111 @@ const proyectos = [
   }
 ]
 
+function ProjectCard({ p }: { p: any }) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <div
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        background: '#020617',
+        borderRadius: 20,
+        overflow: 'hidden',
+        border: '1px solid',
+        borderColor: isHovered ? '#38bdf8' : '#1e293b',
+        transform: isHovered ? 'translateY(-8px)' : 'translateY(0)',
+        transition: 'all 0.3s ease',
+        cursor: 'default',
+        boxShadow: isHovered ? '0 10px 30px -10px rgba(56, 189, 248, 0.3)' : 'none'
+      }}
+    >
+      <div style={{ width: '100%', height: '220px', overflow: 'hidden' }}>
+        <img
+          src={p.imagen}
+          alt={p.nombre}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            borderBottom: '1px solid #1e293b',
+            transform: isHovered ? 'scale(1.05)' : 'scale(1)',
+            transition: 'transform 0.3s ease'
+          }}
+        />
+      </div>
+
+      <div style={{ padding: '25px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+        <h3 style={{ 
+          fontSize: '1.4rem', 
+          marginBottom: 12, 
+          color: isHovered ? '#38bdf8' : '#f8fafc', 
+          transition: 'color 0.3s' 
+        }}>
+          {p.nombre}
+        </h3>
+        
+        <p style={{ color: '#94a3b8', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: 20, flexGrow: 1 }}>
+          {p.descripcion}
+        </p>
+
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 20 }}>
+          {p.tecnologias.map((t: string, j: number) => (
+            <span key={j} style={{
+              background: '#0f172a',
+              color: '#38bdf8',
+              padding: '4px 12px',
+              borderRadius: '20px',
+              fontSize: '0.75rem',
+              fontWeight: '600',
+              border: '1px solid #38bdf844'
+            }}>
+              {t}
+            </span>
+          ))}
+        </div>
+
+        <a 
+          href={p.link} 
+          target="_blank" 
+          rel="noreferrer"
+          style={{ 
+            color: '#f8fafc', 
+            textDecoration: 'none',
+            fontWeight: '600',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 5,
+            fontSize: '0.9rem'
+          }}
+        >
+          Ver código en GitHub 
+          <span style={{ 
+            color: '#38bdf8', 
+            transform: isHovered ? 'translateX(5px)' : 'translateX(0)', 
+            transition: 'transform 0.3s' 
+          }}>
+            →
+          </span>
+        </a>
+      </div>
+    </div>
+  );
+}
+
 export default function Projects() {
   return (
-    <section id="projects" style={{
-      margin: '80px auto',
-      padding: '0 20px'
-    }}>
+    <section id="projects" style={{ margin: '80px auto', padding: '0 20px' }}>
       <h2 style={{ marginBottom: 40, fontSize: '2.5rem', fontWeight: 'bold' }}>Proyectos</h2>
-
       <div style={{
         display: 'grid',
-        // Esto crea 2 columnas en PC y 1 en celular automáticamente
         gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
         gap: '30px'
       }}>
         {proyectos.map((p, i) => (
-          <div key={i} style={{
-            display: 'flex',
-            flexDirection: 'column', // Imagen arriba, info abajo
-            background: '#020617',
-            borderRadius: 20,
-            overflow: 'hidden', // Para que la imagen respete el radio del borde
-            border: '1px solid #1e293b',
-            transition: 'transform 0.3s ease',
-            cursor: 'default'
-          }}>
-            {/* Contenedor de Imagen con altura fija para uniformidad */}
-            <div style={{ width: '100%', height: '220px', overflow: 'hidden' }}>
-              <img
-                src={p.imagen}
-                alt={p.nombre}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  borderBottom: '1px solid #1e293b'
-                }}
-              />
-            </div>
-
-            {/* Contenido de la Card */}
-            <div style={{ padding: '25px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-              <h3 style={{ fontSize: '1.4rem', marginBottom: 12 }}>{p.nombre}</h3>
-              
-              <p style={{ 
-                color: '#94a3b8', 
-                fontSize: '0.95rem', 
-                lineHeight: '1.6', 
-                marginBottom: 20,
-                flexGrow: 1 // Empuja las etiquetas hacia abajo para que todas las cards alineen
-              }}>
-                {p.descripcion}
-              </p>
-
-              {/* Tecnologías */}
-              <div style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: 8,
-                marginBottom: 20
-              }}>
-                {p.tecnologias.map((t, j) => (
-                  <span key={j} style={{
-                    background: '#0f172a',
-                    color: '#38bdf8',
-                    padding: '4px 12px',
-                    borderRadius: '20px',
-                    fontSize: '0.75rem',
-                    fontWeight: '600',
-                    border: '1px solid #38bdf844'
-                  }}>
-                    {t}
-                  </span>
-                ))}
-              </div>
-
-              <a 
-                href={p.link} 
-                target="_blank" 
-                rel="noreferrer"
-                style={{ 
-                  color: '#f8fafc', 
-                  textDecoration: 'none',
-                  fontWeight: '600',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 5,
-                  fontSize: '0.9rem'
-                }}
-              >
-                Ver código en GitHub <span style={{ color: '#38bdf8' }}>→</span>
-              </a>
-            </div>
-          </div>
+          <ProjectCard key={i} p={p} />
         ))}
       </div>
     </section>
