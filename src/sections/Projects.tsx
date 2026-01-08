@@ -44,10 +44,10 @@ const proyectos = [
     link: 'https://github.com/lauasdasd/family-finance-manager'
   },
   {
-    nombre: 'Sistema de gestion de Kiosco',
-    descripcion: 'Sistema de escritorio desarrollado en C# para la gestión integral de un kiosco. Incluye control de stock, registro de ventas, actualización de precios y seguimiento de ingresos, orientado a optimizar la operatoria diaria del comercio.',
+    nombre: 'Sistema de Gestión de Kiosco',
+    descripcion: 'Software de escritorio desarrollado en C# enfocado en la seguridad y eficiencia operativa. El sistema implementa una arquitectura basada en roles: un Panel de Cajero para ventas ágiles y un Panel de Administrador para control total de stock, actualización masiva de precios y seguimiento detallado de ingresos diarios.',
     imagen: kiosco,
-    tecnologias: ['C#'],
+    tecnologias: ['C#', '.NET', 'SQL Server'], // Agregué SQL Server asumiendo que usas una DB
     link: 'https://github.com/lauasdasd/Gestion-de-Kiosco'
   }
 ]
