@@ -14,7 +14,6 @@ const stack = [
 export default function Stack() {
   return (
     <section style={{
-      maxWidth: '1100px',
       margin: '40px auto',
       padding: '0 20px'
     }}>

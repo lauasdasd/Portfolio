@@ -53,62 +53,93 @@ const proyectos = [
 export default function Projects() {
   return (
     <section id="projects" style={{
-      maxWidth: '1100px',
-      margin: '60px auto',
+      margin: '80px auto',
       padding: '0 20px'
     }}>
-      <h2 style={{ marginBottom: 30 }}>Proyectos</h2>
+      <h2 style={{ marginBottom: 40, fontSize: '2.5rem', fontWeight: 'bold' }}>Proyectos</h2>
 
       <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 40
+        display: 'grid',
+        // Esto crea 2 columnas en PC y 1 en celular automáticamente
+        gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+        gap: '30px'
       }}>
         {proyectos.map((p, i) => (
           <div key={i} style={{
             display: 'flex',
-            gap: 30,
+            flexDirection: 'column', // Imagen arriba, info abajo
             background: '#020617',
-            padding: 20,
-            borderRadius: 16
+            borderRadius: 20,
+            overflow: 'hidden', // Para que la imagen respete el radio del borde
+            border: '1px solid #1e293b',
+            transition: 'transform 0.3s ease',
+            cursor: 'default'
           }}>
-            <img
-            src={p.imagen}
-            alt={p.nombre}
-            style={{
-                width: 'auto',
-                height: 280,
-                borderRadius: 12,
-                objectFit: 'cover'
-            }}
-            />
+            {/* Contenedor de Imagen con altura fija para uniformidad */}
+            <div style={{ width: '100%', height: '220px', overflow: 'hidden' }}>
+              <img
+                src={p.imagen}
+                alt={p.nombre}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  borderBottom: '1px solid #1e293b'
+                }}
+              />
+            </div>
 
-            <div>
-              <h3>{p.nombre}</h3>
-              <p style={{ color: '#94a3b8', margin: '10px 0' }}>
+            {/* Contenido de la Card */}
+            <div style={{ padding: '25px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+              <h3 style={{ fontSize: '1.4rem', marginBottom: 12 }}>{p.nombre}</h3>
+              
+              <p style={{ 
+                color: '#94a3b8', 
+                fontSize: '0.95rem', 
+                lineHeight: '1.6', 
+                marginBottom: 20,
+                flexGrow: 1 // Empuja las etiquetas hacia abajo para que todas las cards alineen
+              }}>
                 {p.descripcion}
               </p>
 
+              {/* Tecnologías */}
               <div style={{
                 display: 'flex',
                 flexWrap: 'wrap',
                 gap: 8,
-                marginBottom: 12
+                marginBottom: 20
               }}>
                 {p.tecnologias.map((t, j) => (
                   <span key={j} style={{
                     background: '#0f172a',
-                    padding: '6px 10px',
-                    borderRadius: 12,
-                    fontSize: 13
+                    color: '#38bdf8',
+                    padding: '4px 12px',
+                    borderRadius: '20px',
+                    fontSize: '0.75rem',
+                    fontWeight: '600',
+                    border: '1px solid #38bdf844'
                   }}>
                     {t}
                   </span>
                 ))}
               </div>
 
-              <a href={p.link} target="_blank" style={{ color: '#38bdf8' }}>
-                Ver repositorio →
+              <a 
+                href={p.link} 
+                target="_blank" 
+                rel="noreferrer"
+                style={{ 
+                  color: '#f8fafc', 
+                  textDecoration: 'none',
+                  fontWeight: '600',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 5,
+                  fontSize: '0.9rem'
+                }}
+              >
+                Ver código en GitHub <span style={{ color: '#38bdf8' }}>→</span>
               </a>
             </div>
           </div>

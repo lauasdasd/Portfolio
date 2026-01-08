@@ -1,7 +1,6 @@
 export default function Hero() {
   return (
-    <section style={{
-      maxWidth: '1100px',
+    <section id="hero" style={{
       margin: '80px auto',
       padding: '0 20px'
     }}>
