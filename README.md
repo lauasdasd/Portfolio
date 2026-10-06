@@ -1,73 +1,50 @@
-# React + TypeScript + Vite
+# 🚀 Portfolio Profesional — Lautaro Varga
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portfolio profesional desarrollado con **React 19**, **TypeScript** y **Vite**, enfocado en destacar proyectos de ingeniería de software, sistemas implementados en producción y sistemas avanzados con Inteligencia Artificial como **LEVA Core**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 Proyecto Insignia: LEVA Core
+**LEVA Core** es un *Personal AI Operating System* (Sistema Operativo Personal Inteligente) desarrollado con:
+- **Backend:** Python 3.13, FastAPI, SQLAlchemy 2.x, Alembic, Redis.
+- **Inteligencia Artificial:** LangGraph, Model Context Protocol (MCP), Búsqueda semántica con embeddings.
+- **Bases de Datos:** PostgreSQL 17 + extensión vectorial `pgvector`.
+- **Frontend:** React 19, TypeScript, TanStack Query, Zustand, Tailwind CSS.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Stack Tecnológico del Portfolio
+- **Framework:** React 19 + TypeScript
+- **Bundler:** Vite
+- **Iconos:** Lucide React
+- **Estilos:** Modern Vanilla CSS con diseño Glassmorphism, tokens de diseño y responsive layout
+- **Fuentes:** Outfit, Plus Jakarta Sans, JetBrains Mono
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 💻 Proyectos Incluidos
+1. **LEVA Core — Personal AI OS:** Sistema Operativo Personal con memoria semántica, agentes autónomos y herramientas MCP.
+2. **Sistema de Librería (Tienda Online):** E-commerce implementado en producción con Mercado Pago, catálogo y gestión de pedidos.
+3. **Sistema de Librería (Gestión de Stock):** Software interno de control de inventario, stock y movimientos.
+4. **Concejo Municipal:** Plataforma de gestión documental y trazabilidad de expedientes y resoluciones en producción.
+5. **Préstamos Tercerizados:** Core de administración de créditos y consumo de APIs bancarias.
+6. **Family Finance Manager:** Aplicación web full stack para administración de finanzas personales (Python + React).
+7. **Sistema de Gestión de Kiosco:** Software de escritorio en C# y .NET con panel de cajero y administrador.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🚀 Instalación y Ejecución
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/lauasdasd/Portfolio.git
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+# 2. Instalar dependencias
+npm install
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+# 3. Iniciar servidor de desarrollo
+npm run dev
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# 4. Compilar para producción
+npm run build
 ```
